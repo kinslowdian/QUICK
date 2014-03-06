@@ -1,0 +1,232 @@
+<html lang="en">
+	
+	<head>
+		
+		<title>RAIN 240px TILE</title>
+		
+		<style type="text/css">
+		
+			*
+			{
+				padding: 0;
+				margin: 0;
+				outline: none;
+				border: none;
+			}
+			
+			#wrapper
+			{
+				width: 100%;
+				height: 100%;
+				
+				position: absolute;
+				
+				top: 0; left: 0; right: 0; bottom: 0;
+				
+				margin: auto;
+				
+				background: url(bg.png) repeat center top;
+			
+				overflow: hidden;
+				
+				/* -webkit-transform: rotate(60deg); */
+			}
+			
+			.rain
+			{
+				width: inherit;
+				height: 200%;
+				
+				position: absolute;
+				
+				top: -50%; left: 0; right: 0; bottom: 50%;
+				
+				margin: auto;
+				
+				z-index: 2;
+				
+/*
+				-webkit-transform-origin: 50% 50%;
+				transform-origin: 50% 50%;
+*/
+				
+/*
+				-webkit-transform: rotate(45deg);
+				transform: rotate(45deg);
+*/
+				
+				
+				
+				background: url(rain_1x.png) repeat center bottom;
+			}
+			
+			.tween-rain
+			{
+				-webkit-animation: tweenRainFrames 0.2s linear infinite;
+				animation: tweenRainFrames 0.2s linear infinite;
+			}
+			
+			@-webkit-keyframes tweenRainFrames
+			{
+				from	{-webkit-transform: translateY(0px)}
+				to		{-webkit-transform: translateY(240px)}
+			}
+			
+			@keyframes tweenRainFrames
+			{
+				from	{transform: translateY(0px);}
+				to		{transform: translateY(240px);}				
+			}
+			
+			.lightning
+			{
+				width: inherit;
+				height: inherit;
+				
+				background: #fff;
+				
+				position: absolute;
+				
+				z-index: 0;
+			
+				opacity: 0;
+			}
+			
+			.tween-lightning
+			{
+				-webkit-animation: tweenLightningFrames 0.1s steps(4) 1s;
+			}
+			
+			@-webkit-keyframes tweenLightningFrames
+			{
+				from	{opacity: 0;}
+				to		{opacity: 1;}
+			}
+			
+			.cloudy
+			{
+				width: inherit;
+				height: inherit;
+				
+				position: absolute;
+				
+				z-index: 1;
+				
+				background: #000;
+				
+				opacity: 0;
+			}
+			
+			.tween-cloudy
+			{
+				-webkit-animation	: tweenCloudyFrames 6s ease-in-out infinite 4s;
+				animation			: tweenCloudyFrames 6s ease-in-out infinite 4s;
+			}
+			
+			@-webkit-keyframes tweenCloudyFrames
+			{
+				0%		{ opacity: 0;  }
+				50%		{ opacity: 0.2 }
+				100%	{ opacity: 0; }
+			}
+			
+			@keyframes tweenCloudyFrames
+			{
+				0%		{ opacity: 0;  }
+				50%		{ opacity: 0.1 }
+				100%	{ opacity: 0; }
+			}
+			
+			.flat
+			{
+				width: 320px;
+				height: inherit;
+				
+				position: absolute;
+				
+				left: 320px;
+				top:0;
+				
+				z-index: 0;
+				
+				background: #dfdfd5;
+			}
+		
+		</style>
+		
+<!--
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+-->
+		
+<!--
+		<script type="text/javascript">
+			
+			var trace = function(str){ console.log(str); };
+			
+			$(document).ready(function(){ go(); });
+			
+			var Lightning = {};
+			
+			function go()
+			{
+				trace("OK");
+				
+				// lightning_init();
+			}
+			
+			function lightning_init()
+			{
+				trace("lightning_init();");
+				
+				Lightning.runValue = Math.round(Math.random() * (6 - 2) + 2);
+				
+				Lightning.timer = setTimeout(lightning_apply, Lightning.runValue * 1000);
+			}
+			
+			function lightning_apply()
+			{ 
+				trace("lightning_apply();");
+				
+				$(".lightning").addClass("tween-lightning");
+			
+				$(".tween-lightning")[0].addEventListener("webkitAnimationEnd", lightning_end, false);
+				$(".tween-lightning")[0].addEventListener("animationend", lightning_end, false);
+			}
+			
+			function lightning_end(event)
+			{
+				trace("lightning_end();");
+				
+				$(".tween-lightning")[0].removeEventListener("webkitAnimationEnd", lightning_end, false);
+				$(".tween-lightning")[0].removeEventListener("animationend", lightning_end, false);
+				
+				$(".lightning").removeClass("tween-lightning");
+				
+				lightning_init();				
+			}
+			
+		</script>
+-->
+		
+	</head>
+	
+	<body>
+	
+		<div id="wrapper">
+			
+			<div class="cloudy tween-cloudy"></div>
+			
+			<!-- <div class="lightning tween-lightning"></div> -->
+			
+			<div class="rain tween-rain">
+			
+			</div>
+			
+			<div class="flat"></div>
+			
+		</div>
+	
+	</body>
+	
+</html>
