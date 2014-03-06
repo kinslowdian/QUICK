@@ -25,11 +25,9 @@
 				
 				margin: auto;
 				
-				background: url(bg.png) repeat center top;
+				background: url(bg.png) repeat left top;
 			
 				overflow: hidden;
-				
-				/* -webkit-transform: rotate(60deg); */
 			}
 			
 			.rain
@@ -44,17 +42,6 @@
 				margin: auto;
 				
 				z-index: 2;
-				
-/*
-				-webkit-transform-origin: 50% 50%;
-				transform-origin: 50% 50%;
-*/
-				
-/*
-				-webkit-transform: rotate(45deg);
-				transform: rotate(45deg);
-*/
-				
 				
 				
 				background: url(rain_1x.png) repeat center bottom;
@@ -78,31 +65,6 @@
 				to		{transform: translateY(240px);}				
 			}
 			
-			.lightning
-			{
-				width: inherit;
-				height: inherit;
-				
-				background: #fff;
-				
-				position: absolute;
-				
-				z-index: 0;
-			
-				opacity: 0;
-			}
-			
-			.tween-lightning
-			{
-				-webkit-animation: tweenLightningFrames 0.1s steps(4) 1s;
-			}
-			
-			@-webkit-keyframes tweenLightningFrames
-			{
-				from	{opacity: 0;}
-				to		{opacity: 1;}
-			}
-			
 			.cloudy
 			{
 				width: inherit;
@@ -112,7 +74,7 @@
 				
 				z-index: 1;
 				
-				background: #000;
+				background: rgba(30, 30, 40, 0.8);
 				
 				opacity: 0;
 			}
@@ -154,61 +116,6 @@
 		
 		</style>
 		
-<!--
-		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-		<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
--->
-		
-<!--
-		<script type="text/javascript">
-			
-			var trace = function(str){ console.log(str); };
-			
-			$(document).ready(function(){ go(); });
-			
-			var Lightning = {};
-			
-			function go()
-			{
-				trace("OK");
-				
-				// lightning_init();
-			}
-			
-			function lightning_init()
-			{
-				trace("lightning_init();");
-				
-				Lightning.runValue = Math.round(Math.random() * (6 - 2) + 2);
-				
-				Lightning.timer = setTimeout(lightning_apply, Lightning.runValue * 1000);
-			}
-			
-			function lightning_apply()
-			{ 
-				trace("lightning_apply();");
-				
-				$(".lightning").addClass("tween-lightning");
-			
-				$(".tween-lightning")[0].addEventListener("webkitAnimationEnd", lightning_end, false);
-				$(".tween-lightning")[0].addEventListener("animationend", lightning_end, false);
-			}
-			
-			function lightning_end(event)
-			{
-				trace("lightning_end();");
-				
-				$(".tween-lightning")[0].removeEventListener("webkitAnimationEnd", lightning_end, false);
-				$(".tween-lightning")[0].removeEventListener("animationend", lightning_end, false);
-				
-				$(".lightning").removeClass("tween-lightning");
-				
-				lightning_init();				
-			}
-			
-		</script>
--->
-		
 	</head>
 	
 	<body>
@@ -216,8 +123,6 @@
 		<div id="wrapper">
 			
 			<div class="cloudy tween-cloudy"></div>
-			
-			<!-- <div class="lightning tween-lightning"></div> -->
 			
 			<div class="rain tween-rain">
 			
